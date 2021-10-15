@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_account/global/global.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      builder: EasyLoading.init(),
     );
   }
 }
@@ -31,6 +34,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    Global.instance.dio.post("/zxw/user", queryParameters: {
+      "username": "zhangsan",
+      "password": "zhangsan",
+    });
+  }
 
   void _incrementCounter() {
     setState(() {

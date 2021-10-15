@@ -40,5 +40,5 @@ class Global {
 
   static final Global _instance = Global._privateConstructor();
 
-  Global get instance => _instance;
+  static Global get instance => _instance;
 }
